@@ -16,7 +16,7 @@
 
 #include "sysconfig.h"
 
-/* this defione is here for newcpu.c compatibility.
+/* this define is here for newcpu.c compatibility.
  * In WinUae, it's defined in debug.h" */
 #ifndef MAX_LINEWIDTH
 #define MAX_LINEWIDTH 100
