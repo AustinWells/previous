@@ -558,9 +558,9 @@ static void Main_SetSignalHandlers(void) {
 int main(int argc, char *argv[]) {
 	/* Generate random seed */
 	srand(time(NULL));
-    
-    /* Set signal handlers */
-    Main_SetSignalHandlers();
+
+	/* Set signal handlers */
+	Main_SetSignalHandlers();
 
 	/* Initialize directory strings */
 	Paths_Init(argv[0]);
@@ -570,7 +570,7 @@ int main(int argc, char *argv[]) {
 
 	/* Now load the values from the configuration file */
 	Main_LoadInitialConfig();
-    
+
 #if 0 /* FIXME: This sometimes causes exits when starting from application bundles */
 	/* Check for any passed parameters */
 	if (!Opt_ParseParameters(argc, (const char * const *)argv))
@@ -597,7 +597,7 @@ int main(int argc, char *argv[]) {
 
 	/* Set initial Statusbar information */
 	Main_StatusbarSetup();
-	
+
 	/* Check if SDL_Delay is accurate */
 	Main_CheckForAccurateDelays();
 
