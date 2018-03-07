@@ -7,9 +7,8 @@
  */
 
 #include <stdio.h>
-#include <stdlib.h>                  
-#include "queue.h"       
-
+#include <stdlib.h>
+#include "queue.h"
 /*
  * Constants
  * ---------
@@ -22,6 +21,7 @@
  * struct queueCDT gives the implementation of a queue.
  * It holds the information that we need for each queue.
  */
+
 typedef struct queueCDT {
   queueElementT contents[MAX_QUEUE_SIZE];
   int front;
@@ -55,8 +55,6 @@ void QueueEnter(queueADT queue, queueElementT element)
   int newElementIndex;
 
   if (queue->count >= MAX_QUEUE_SIZE) {
-//    fprintf(stderr, "QueueEnter on Full Queue.\n");
-//    exit(ERROR_QUEUE);  /* Exit program, returning error code. */
 	return;
   }
 
@@ -67,8 +65,6 @@ void QueueEnter(queueADT queue, queueElementT element)
   newElementIndex = (queue->front + queue->count)
                     % MAX_QUEUE_SIZE;
   queue->contents[newElementIndex] = element;
-//printf("element %d, pointer to %d, [%s]\n",newElementIndex,element,element);
-
   queue->count++;
 }
 
@@ -82,8 +78,6 @@ queueElementT QueueDelete(queueADT queue)
   queueElementT oldElement;
 
   if (queue->count <= 0) {
-    //fprintf(stderr, "QueueDelete on Empty Queue.\n");
-    //exit(ERROR_QUEUE);  /* Exit program, returning error code. */
 	return NULL;
   }
 
@@ -97,20 +91,18 @@ queueElementT QueueDelete(queueADT queue)
    */
   queue->front++;
   queue->front %= MAX_QUEUE_SIZE;
-	
-//printf("dequing @%d [%s]\n",oldElement,oldElement);
 
   queue->count--;
 
   return oldElement;
 }
 
-int QueueIsEmpty(queueADT queue)
+inline int QueueIsEmpty(queueADT queue)
 {
   return queue->count <= 0;
 }
 
-int QueueIsFull(queueADT queue)
+inline int QueueIsFull(queueADT queue)
 {
   return queue->count >= MAX_QUEUE_SIZE;
 }
